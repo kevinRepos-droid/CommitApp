@@ -1,9 +1,11 @@
 import React,{useState} from 'react'
 import { Button, StyleSheet, Text, View, TextInput } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native';
 
 
 
-const HomeNica = () => {
+
+const HomeNica = ( {navigation }) => {
     const [user, setUser] = useState('')
 
     const [password, setPasword] = useState('')
@@ -19,7 +21,7 @@ const HomeNica = () => {
 
     }
     return (
-        <View>
+        <View style={styles.container}>
             <Text style={styles.text}>Usuario</Text>
             <TextInput
             style={styles.inputs}
@@ -64,6 +66,12 @@ const styles = StyleSheet.create({
     },
     button:{
         
-    }
+    },
+    container: {
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop:'50%'
+      },
 
 })
