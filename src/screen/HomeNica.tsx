@@ -12,14 +12,18 @@ const HomeNica = ( {navigation }) => {
 
     const ValUser = () =>{
         if (user==='Kevin' && password==='123'){
-            alert('Bienvenido')
+            navigation.navigate('Lista')
         }
         else{
             alert('Datos no correctos')
         }
         
-
     }
+    const newform = ()=>{
+        navigation.navigate('Lista2')
+    }
+    
+       
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Usuario</Text>
@@ -40,6 +44,12 @@ const HomeNica = ( {navigation }) => {
             title="iniciar"
             onPress={ValUser}
             />
+
+            <Button
+            title="Liquidar"
+            onPress={newform}
+            />
+          
          </View>
 
         </View>

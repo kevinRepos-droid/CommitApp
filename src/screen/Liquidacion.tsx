@@ -1,8 +1,8 @@
 import React, { useEffect } from  'react'
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
 import { useState } from 'react'
 
-const Liquidacion = () => {
+const Liquidacion = ({navigation}) => {
     const [nombre, setNombre] = useState ('');
     const [salario, setSalario] = useState ('');
      const [result, setResul] = useState <number>(0);
@@ -27,7 +27,13 @@ const Liquidacion = () => {
             />
             <Text>{nombre} su salario anual es de:{result.toString()}</Text>
 
+            <Button 
+            title="Regresar" 
+            onPress={() => navigation.goBack()} 
+            />
             </View>
+            
+            
     )
 }
 
