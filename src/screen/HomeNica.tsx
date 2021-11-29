@@ -1,87 +1,88 @@
-import React,{useState} from 'react'
-import { Button, StyleSheet, Text, View, TextInput } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
+import React,{useState, } from 'react'
+import { Image, Button, StyleSheet, Text, View, TextInput, ScrollView } from 'react-native';
 
+const logo = {
+  uri: "https://cengage.force.com/resource/1607465003000/loginIcon",
+};
+const HomeNica = ({ navigation }) => {
+ 
+  const [user, setUser] = useState("");
+  const [password, setPasword] = useState("");
 
-
-
-const HomeNica = ( {navigation }) => {
-    const [user, setUser] = useState('')
-
-    const [password, setPasword] = useState('')
-
-    const ValUser = () =>{
-        if (user==='Kevin' && password==='123'){
-            navigation.navigate('Lista')
-        }
-        else{
-            alert('Datos no correctos')
-        }
-        
+  const ValUser = () => {
+    if (user === "Kevin" && password === "123") {
+      navigation.navigate("Menu");
+    } else {
+      alert("Datos no correctos");
     }
-    const newform = ()=>{
-        navigation.navigate('Lista2')
-    }
-    
-       
-    return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Usuario</Text>
-            <TextInput
-            style={styles.inputs}
-            placeholder={'Ingrese su usuario'}
-            onChangeText={setUser}
-
-            />
-            <Text style={styles.text}>Contraseña</Text>
-            <TextInput
-            style={styles.inputs}
-            placeholder={'Contraseña'}
-            onChangeText={setPasword}
-            />
-            <View style={styles.button}>
-            <Button
-            title="iniciar"
-            onPress={ValUser}
-            />
-
-            <Button
-            title="Liquidar"
-            onPress={newform}
-            />
-          
-         </View>
-
+  };
+  
+  return (
+    <ScrollView>
+      <View style={styles.containerkevin}>
+        <View style={styles.logoheader}>
+          <Image style={styles.logo} source={logo} />
         </View>
-    )
-
-}
+        <View style={styles.titlekevin}>
+          <Text style={styles.text}>Usuario</Text>
+        </View>
+        <TextInput
+          style={styles.inputs}
+          placeholder={"Ingrese su usuario"}
+          onChangeText={setUser}
+        />
+        <View style={styles.titlekevin}>
+          <Text style={styles.text}>Contraseña</Text>
+        </View>
+        <TextInput
+          style={styles.inputs}
+          placeholder={"Contraseña"}
+          onChangeText={setPasword}
+        />
+        <View style={styles.boton}>
+          <Button title="iniciar" onPress={ValUser} />
+        </View>
+      </View>
+    </ScrollView>
+  );
+};
 
 export default HomeNica
 
 const styles = StyleSheet.create({
+        containerkevin: {
+        textAlign: "center",
+        padding: 24,
+        marginTop:'10%',
+    },
+    titlekevin: {
+        marginTop: 16,
+        paddingVertical: 8,
+        backgroundColor: "#61dafb",
+    },
     inputs: {
         backgroundColor: '#F2F8FB',
-        borderRadius: 8,
-        padding: 10,
+        padding: 15,
         textAlign: 'center',
         fontSize: 22,
-        fontWeight: 'bold',
         color: '#004445',
-        
     },
     text:{
         fontSize:26,
-        color:'#05786A'
+        color:'black',
+        textAlign: 'center'
     },
-    button:{
-        
+    boton:{
+        paddingVertical: 20,
+        textAlign: "center",
+        marginHorizontal: 100,
     },
-    container: {
-        backgroundColor: '#fff',
-        alignItems: 'center',
+    logo:{ 
+        width: 200,
+        height: 200, 
+    },
+        logoheader:{
         justifyContent: 'center',
-        marginTop:'50%'
-      },
-
-})
+        alignItems: 'center',
+    }
+   })

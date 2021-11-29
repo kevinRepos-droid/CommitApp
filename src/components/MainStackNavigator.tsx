@@ -4,8 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Liquidacion from '../screen/Liquidacion';
 import NicaAtributo from '../screen/Nicatributos';
 import HomeNica from '../screen/HomeNica';
-
-
+import List from '../screen/List';
+import Menu from '../screen/Menu';
+import Listkey from '../screen/Listkey';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,25 +16,23 @@ const MainStackNavigator = () => {
       <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen name="Lista2" component={Liquidacion} />
         <Stack.Screen name="Login" component={HomeNica} />
+        <Stack.Screen name="Clientes" component={List} />
+        <Stack.Screen name="Menu" component={Menu} />
+        <Stack.Screen name="Listkey" component={Listkey} />
         <Stack.Screen name="Lista" component={NicaAtributo}
-
           options={{
-            title: 'My home',
+            title: 'Bienvenido',
             headerStyle: {
-              backgroundColor: 'skyblue',
+            backgroundColor: '#60C8F0',
             },
-            headerTintColor: '#fff',
+            headerTintColor: 'white',
             headerTitleStyle: {
-              fontWeight: 'bold',
-
+            fontWeight: 'bold',
             },
-            
           }} />
         <Stack.Screen name="liquidacion" component={Liquidacion} />
 
       </Stack.Navigator>
-
-      {/* <HomeSource /> */}
 
     </NavigationContainer>
   )

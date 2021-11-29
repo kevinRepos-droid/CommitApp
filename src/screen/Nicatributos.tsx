@@ -1,7 +1,6 @@
-import React,{ useState} from 'react'
-import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native'
-
-
+import React,{ useState, useEffect, } from 'react'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView} from 'react-native'
+import FormInputs from '../components/FormInputs';
 
 const NicaAtributo = () => {
     const [producto, setProducto] = useState<string>("");
@@ -15,51 +14,45 @@ const NicaAtributo = () => {
         let caldescuento = calculo * parseFloat(descuento) / 100
         let resultado = calculo -caldescuento
         setResultado(resultado)
-
+    }
+    useEffect (valVentas, [cantidad,descuento,precio])
+    const resetData =() =>{
+        setResultado(0)
+    }
+    const resetDatos=()=> {
+        setCantidad('')
     }
     
     return (
+      <ScrollView style={styles.scrollView}>
+        <Text style={styles.text}>El total es de {resultado}</Text>  
         <View style={styles.container}>
-             <Text style={styles.text}>Ingresar producto</Text>
-            <TextInput
-                style={styles.inputs}
-                placeholder="Nombre del producto"
-                onChangeText={setProducto}
-
-            />
-        <Text style={styles.text}>Ingresar Cantidad</Text>
-            <TextInput
-                style={styles.inputs}
-                placeholder="Cantidad"
-                onChangeText={setCantidad}
-
-            />
-             <Text style={styles.text}>Precio</Text>
-            <TextInput
-                style={styles.inputs}
-                placeholder="Precio"
-                onChangeText={setPrecio}
-
-            />
-             <Text style={styles.text}>Descuento</Text>
-            <TextInput
-                style={styles.inputs}
-                placeholder="Descuento"
-                onChangeText={setDescuento}
-
-            />
-             <Text style={styles.text}>El total es de {resultado}</Text>
-
-             <TouchableOpacity
-                onPress={valVentas}
-                style={styles.botonReset}
-            >
-                <Text style={styles.textbotonReset}>Iniciar</Text>
-            </TouchableOpacity>
-           
-
+          <FormInputs
+            title={"Nombre Producto"}
+            placeholder={"Producto"}
+            onChangeText={setProducto}
+          />
+          <FormInputs
+            title={"Ingresar la cantidad"}
+            placeholder={"Cantidad"}
+            onChangeText={setCantidad}
+          />
+          <FormInputs
+            title={"Precio"}
+            placeholder={"Precio"}
+            onChangeText={setPrecio}
+          />
+          <FormInputs
+            title={"Descuento"}
+            placeholder={"Descuento"}
+            onChangeText={setDescuento}
+          />
+          <TouchableOpacity onPress={valVentas} style={styles.botonReset}>
+          <Text style={styles.textbotonReset}>Iniciar</Text>
+          </TouchableOpacity>
         </View>
-    )
+      </ScrollView>
+    );
 }
 
 export default NicaAtributo
@@ -76,16 +69,15 @@ const styles = StyleSheet.create({
         marginTop: 30,
     },
     text: {
-        fontSize: 20,
-        color: '#05786A',
+        fontSize: 30,
+        color: 'black',
         marginTop: 30
     },
     container: {
         flex: 1,
-        backgroundColor: '#f0e0b4',
+        backgroundColor: '#7ECFED',
         width:'95%',
         marginLeft: 10
-
     },
     textbotonReset: {
         color: '#00514E',
@@ -99,5 +91,9 @@ const styles = StyleSheet.create({
         width: '100%',
         paddingVertical: 7,
         marginTop: 1
+    },
+    scrollView: {
+        backgroundColor: '#8FB5C3',
+        marginHorizontal: 20
     }
 })
